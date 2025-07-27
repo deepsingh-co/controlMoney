@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartExpense - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>SmartExpense</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="add-expense.html">Add Expense</a>
+      <a href="upload.html">Upload Statement</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">SignUp</a>
+      
+    </nav>
+    <div class="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="themeSwitch">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section class="summary">
+      <div class="card">
+        <h2>Total Spent</h2>
+        <p></p>
+      </div>
+      <div class="card">
+        <h2>Today's Spending</h2>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="recent">
+      <h2>Recent Transactions</h2>
+      <ul></ul>
+    </section>
+
+    <section class="chart-section">
+      <h2>Expenses by Category</h2>
+      <canvas id="expenseChart" width="400" height="400"></canvas>
+    </section>
+
+    <section class="chart-section">
+      <h2>Monthly Spend Comparison</h2>
+      <canvas id="monthlyChart" width="400" height="300"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SmartExpense | Made with 💻 by Anurudh</p>
+  </footer>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

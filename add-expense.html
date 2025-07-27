@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Expense</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>SmartExpense</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="add-expense.html">Add Expense</a>
+      <a href="upload.html">Upload Statement</a>
+    </nav>
+  </header>
+
+  <div class="add-expense">
+    <main class="form-section" >
+    <h2>Add New Expense</h2>
+    <form id="expenseForm">
+      <label>
+        Amount (₹):
+        <input type="number" id="amount" required />
+      </label>
+      <label>
+        Category:
+        <select id="category" required>
+          <option value="">Select</option>
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Shopping</option>
+          <option>Utilities</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>
+        Date:
+        <input type="date" id="date" required />
+      </label>
+      <button type="submit">Add Expense</button>
+    </form>
+  </main>
+
+
+  </div>
+
+  
+
+  <footer>
+    <p>© 2025 SmartExpense | Made with 💻 by Anurudh</p>
+  </footer>
+
+  <script src="js/add-expense.js"></script>
+</body>
+</html>

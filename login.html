@@ -1,0 +1,40 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="login">
+  <main class="form-section">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label>Email:
+        <input type="email" id="loginEmail" required />
+      </label>
+      <label>Password:
+        <input type="password" id="loginPassword" required />
+      </label>
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a href="signup.html">Signup here</a></p>
+    </form>
+  </main>
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.email === email && user.password === password) {
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid email or password!");
+      }
+    });
+  </script>
+</body>
+</html>

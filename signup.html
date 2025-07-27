@@ -1,0 +1,41 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Signup</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="add-expense">
+    <main class="form-section">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <label>Email:
+        <input type="email" id="signupEmail" required />
+      </label>
+      <label>Password:
+        <input type="password" id="signupPassword" required />
+      </label>
+      <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+  </main>
+
+  </div>
+
+  
+  <script>
+    const signupForm = document.getElementById("signupForm");
+    signupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      localStorage.setItem("user", JSON.stringify({ email, password }));
+      alert("Signup successful! Please login.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Bank Statement</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>SmartExpense</h1>
+    <nav>
+      <a href="index.html">Dashboard</a>
+      <a href="add-expense.html">Add Expense</a>
+      <a href="upload.html">Upload Statement</a>
+    </nav>
+  </header>
+
+  <div class="add-expense">
+    <main class="form-section">
+      <h2>Upload Bank Statement (PDF)</h2>
+      <input type="file" id="fileInput" accept=".pdf" />
+      <p id="message"></p>
+  </main>
+
+  </div>
+  
+
+  <footer>
+    <p>© 2025 SmartExpense | Made with 💻 by Anurudh</p>
+  </footer>
+
+  <script>
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file || !file.type.includes("pdf")) return;
+
+      const reader = new FileReader();
+      reader.onload = function() {
+        const typedarray = new Uint8Array(reader.result);
+        pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+          let allText = "";
+          let loadPage = pageNum => {
+            if (pageNum > pdf.numPages) {
+              processText(allText);
+              return;
+            }
+            pdf.getPage(pageNum).then(page => {
+              page.getTextContent().then(textContent => {
+                const pageText = textContent.items.map(item => item.str).join(" ");
+                allText += pageText + "\n";
+                loadPage(pageNum + 1);
+              });
+            });
+          };
+          loadPage(1);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+
+    function processText(text) {
+      const lines = text.split('\n');
+      const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
+      lines.forEach(line => {
+        const match = line.match(/(\d{2}-\d{2}-\d{4}).*?(\d+\.\d{2})\(Dr\)/);
+        if (match) {
+          const [_, date, amount] = match;
+          const formattedDate = new Date(date.split("-").reverse().join("-")).toISOString().split("T")[0];
+          expenses.push({
+            date: formattedDate,
+            amount: parseFloat(amount),
+            category: "Bank"
+          });
+        }
+      });
+
+      localStorage.setItem('expenses', JSON.stringify(expenses));
+      document.getElementById("message").textContent = "✅ Bank statement uploaded and saved!";
+    }
+  </script>
+</body>
+</html>
