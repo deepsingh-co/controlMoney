@@ -2,8 +2,11 @@
 
 A lightweight, fully client-side expense tracker built with plain HTML, CSS, and JavaScript. Log expenses manually, import them from a bank statement PDF, and visualise your spending on a dashboard — no backend, no accounts, no setup.
 
+The repo includes a marketing landing page (`landing.html`) and the app itself, whose dashboard lives at `index.html`.
+
 ## Features
 
+- **Landing page** — a responsive, glassmorphism marketing page with light/dark themes.
 - **Dashboard overview** — total spent and today's spending at a glance.
 - **Recent transactions** — latest three expenses, with a "Show More" button for the rest.
 - **Expense by category** — interactive pie chart powered by Chart.js.
@@ -30,7 +33,7 @@ No build step, package manager, or server-side code is required.
 
 ### Option 1: Open directly
 
-Clone the repository and open `index.html` in your browser.
+Clone the repository and open `landing.html` in your browser for the marketing page, or `index.html` for the dashboard.
 
 ```bash
 git clone https://github.com/deepsingh-co/controlMoney.git
@@ -49,15 +52,16 @@ python -m http.server 8000
 npx serve .
 ```
 
-Then visit <http://localhost:8000>.
+Then visit <http://localhost:8000/landing.html> for the landing page or <http://localhost:8000/index.html> for the dashboard.
 
 ## Usage
 
-1. **Sign up** on `signup.html`, then **log in** on `login.html` (optional — the dashboard works without logging in).
-2. Add expenses from **Add Expense**: enter an amount, pick a category, choose a date, and submit.
-3. Import a bank statement from **Upload Statement**: select a PDF and debit transactions are parsed automatically.
-4. Return to the **Dashboard** to see totals, recent transactions, and charts.
-5. Use the toggle in the header to switch between light and dark mode.
+1. **Start on the landing page** (`landing.html`) for an overview, then open the dashboard from the header.
+2. **Sign up** on `signup.html`, then **log in** on `login.html` (optional — the dashboard works without logging in).
+3. Add expenses from **Add Expense**: enter an amount, pick a category, choose a date, and submit.
+4. Import a bank statement from **Upload Statement**: select a PDF and debit transactions are parsed automatically.
+5. Return to the **Dashboard** to see totals, recent transactions, and charts.
+6. Use the toggle in the header to switch between light and dark mode.
 
 ### Bank statement format
 
@@ -73,17 +77,22 @@ Only lines ending in `(Dr)` with a two-decimal amount are captured, and they are
 
 ```text
 controlMoney/
+├── landing.html        # Marketing landing page (hero, features, import, FAQ)
 ├── index.html          # Dashboard: totals, recent transactions, charts
 ├── add-expense.html    # Form for adding an expense manually
 ├── upload.html         # PDF bank statement import (inline PDF.js logic)
 ├── login.html          # Demo login page
 ├── signup.html         # Demo signup page
 ├── css/
-│   └── style.css       # Shared styles, responsive layout, dark theme
-└── js/
-    ├── dashboard.js    # Totals, recent list, Chart.js charts, theme toggle
-    ├── add-expense.js  # Saves new expenses to localStorage
-    └── upload.js       # CSV statement parser (not currently linked to a page)
+│   ├── style.css       # Shared app styles, responsive layout, dark theme
+│   └── landing.css     # Landing page tokens, glassmorphism, landing layout
+├── js/
+│   ├── dashboard.js    # Totals, recent list, Chart.js charts, theme toggle
+│   ├── add-expense.js  # Saves new expenses to localStorage
+│   ├── upload.js       # CSV statement parser (not currently linked to a page)
+│   └── landing.js      # Landing theme toggle and mobile navigation
+└── design-system/
+    └── smartexpense/   # Design tokens and page rules generated with UI/UX Pro Max
 ```
 
 ## Data Storage
