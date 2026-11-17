@@ -105,6 +105,16 @@
       <circle cx="12" cy="12" r="1.5" />
       <circle cx="19" cy="12" r="1.5" />
     </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21a8 8 0 0 1 16 0" />
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <path d="M16 17l5-5-5-5" />
+      <path d="M21 12H9" />
+    </symbol>
   </svg>
 
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -132,6 +142,39 @@
           <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
           Add expense
         </a>
+        <div class="auth-slot">
+          <a class="btn btn-ghost btn-sm auth-login" id="loginLink" href="login.html" aria-label="Log in">
+            <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
+            <span class="auth-label">Log in</span>
+          </a>
+          <div class="profile" id="profileMenu" hidden>
+            <button
+              class="profile-trigger"
+              id="profileTrigger"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="profileDropdown"
+            >
+              <span class="avatar" data-profile-avatar aria-hidden="true">A</span>
+              <span class="profile-name" data-profile-name>Account</span>
+              <svg class="icon profile-caret" aria-hidden="true"><use href="#i-chevron-down"></use></svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown" hidden>
+              <div class="profile-head">
+                <span class="avatar avatar-lg" data-profile-avatar aria-hidden="true">A</span>
+                <div class="profile-meta">
+                  <strong data-profile-email>you@example.com</strong>
+                  <span>Local demo account</span>
+                </div>
+              </div>
+              <button class="profile-item profile-signout" id="signOutBtn" type="button">
+                <svg class="icon" aria-hidden="true"><use href="#i-logout"></use></svg>
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
         <button
           class="icon-btn nav-toggle"
           id="navToggle"

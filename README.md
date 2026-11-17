@@ -15,7 +15,7 @@ The repo includes a marketing landing page (`landing.html`) and the app itself, 
 - **Add expenses** — amount presets, category tiles, a sensible default date, and inline validation.
 - **Bank statement import** — drag and drop a PDF; debit transactions are extracted with PDF.js, duplicate lines are skipped, and the result is listed before you return to the dashboard.
 - **Dark mode** — a theme toggle that remembers your preference and applies before first paint.
-- **Demo authentication** — signup/login with inline validation, password visibility toggles, and locally stored credentials.
+- **Demo authentication** — signup/login with inline validation, password visibility toggles, a profile menu with sign out on the dashboard, and locally stored credentials.
 - **Accessible by default** — skip links, visible focus styles, labelled icons, live-region status messages, and reduced-motion support.
 
 ## Tech Stack
